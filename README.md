@@ -1,4 +1,4 @@
-## Poltergeist
+## Poltergeist [![Build Status](https://travis-ci.org/Two-Screen/poltergeist.png)](https://travis-ci.org/Two-Screen/poltergeist)
 
 Quickly and easily start [PhantomJS] from Node.js.
 
