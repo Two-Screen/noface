@@ -1,37 +1,40 @@
-## Poltergeist [![Build Status](https://travis-ci.org/Two-Screen/poltergeist.png)](https://travis-ci.org/Two-Screen/poltergeist)
+## No-Face [![Build Status](https://travis-ci.org/Two-Screen/noface.png)](https://travis-ci.org/Two-Screen/noface)
 
-Quickly and easily start [PhantomJS] from Node.js.
+No-Face (from [Spirited Away]) lets you quickly and easily start [PhantomJS]
+processes, and exchange data with them, from within [Node.js].
 
-    var poltergeist = require('poltergeist');
+    var noface = require('noface');
 
-    var pg = poltergeist(function(channel) {
+    var ph = noface(function(channel) {
         // Runs within PhantomJS. (No access to closure!)
         channel.onmessage = function(event) {
             channel.send(event.data);
         };
     });
 
-    pg.on("open", function() {
-        pg.send("Hello world!");
+    ph.on("open", function() {
+        ph.send("Hello world!");
     });
 
-    pg.on("message", function(message) {
-        pg.close();
+    ph.on("message", function(message) {
+        ph.close();
     });
 
+ [Spirited Away]: http://en.wikipedia.org/wiki/Spirited_Away
  [PhantomJS]: http://phantomjs.org/
+ [Node.js]: http://nodejs.org/
 
 ### Installing
 
-    npm install poltergeist
+    npm install noface
 
 Make sure `phantomjs` is in your `PATH`.
 
 ### Synopsis
 
-    poltergeist(src, options)
+    noface(src, options)
 
-Poltergeist opens a WebSocket connection between Node.js and PhantomJS. The
+No-Face opens a WebSocket connection between Node.js and PhantomJS. The
 `src` callback function is executed within PhantomJS on the socket `open`
 event, and receives the `WebSocket` instance.
 
@@ -47,7 +50,7 @@ By default, the PhantomJS child exits when the channel closes. Override
 PhantomJS is also set to exit the process and emit an `error` event in
 Node.js.
 
-The return value is a `Poltergeist` instance.
+The return value is a `NoFace` instance.
 
 ##### Events
 
@@ -75,7 +78,7 @@ The return value is a `Poltergeist` instance.
 
 ### Hacking the code
 
-    git clone https://github.com/Two-Screen/poltergeist.git
-    cd poltergeist
+    git clone https://github.com/Two-Screen/noface.git
+    cd noface
     npm install
     npm test

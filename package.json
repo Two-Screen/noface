@@ -1,12 +1,12 @@
 {
-    "name": "poltergeist",
+    "name": "noface",
     "description": "Quickly and easily start PhantomJS from Node.js",
     "author": "Stéphan Kochen <stephan@kochen.nl>",
     "version": "0.1.0",
-    "homepage": "https://github.com/Two-Screen/poltergeist",
+    "homepage": "https://github.com/Two-Screen/noface",
     "repository": {
         "type": "git",
-        "url": "git://github.com/Two-Screen/poltergeist.git"
+        "url": "git://github.com/Two-Screen/noface.git"
     },
     "dependencies": {
         "async": "0.1",

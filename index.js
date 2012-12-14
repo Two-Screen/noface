@@ -13,29 +13,29 @@ var template = async.memoize(function(path, cb) {
     fs.readFile(path, 'utf-8', cb);
 }).bind(null, path.join(__dirname, 'tmpl', 'script.js'));
 
-// A Poltergeist is a handle to a PhantomJS child process.
-function Poltergeist() {
+// A NoFace is a handle to a PhantomJS child process.
+function NoFace() {
     this.child = null;
     this.channel = null;
 }
-util.inherits(Poltergeist, EventEmitter);
+util.inherits(NoFace, EventEmitter);
 
 // Send a message to PhantomJS.
-Poltergeist.prototype.send = function(message) {
+NoFace.prototype.send = function(message) {
     if (!this.channel)
         throw new Error("Channel not established");
     this.channel.send(message);
 };
 
 // Close the connection to PhantomJS.
-Poltergeist.prototype.close = function(message) {
+NoFace.prototype.close = function(message) {
     if (!this.channel)
         throw new Error("Channel not established");
     this.channel.close();
     this.channel = null;
 };
 
-// Create a Poltergeist. Takes a function to execute in PhantomJS, and
+// Create a NoFace. Takes a function to execute in PhantomJS, and
 // optionally any extra options to `child_process.spawn`.
 module.exports = function(src, options) {
     if (typeof(src) === 'function')
@@ -44,11 +44,11 @@ module.exports = function(src, options) {
         src = "function(channel) {" + src + "}";
 
     // Create a handle object.
-    var pg = new Poltergeist();
+    var ph = new NoFace();
 
     // Name of the temporary file containing the PhantomJS script.
     var tmpFile = temp.path({
-        prefix: 'node-poltergeist-',
+        prefix: 'node-noface-',
         suffix: '.js'
     });
 
@@ -81,13 +81,13 @@ module.exports = function(src, options) {
                 // Callback only once.
                 if (!cb) return;
 
-                pg.channel = new WebSocket(req, sock, head);
-                pg.channel.onmessage = function(event) {
-                    pg.emit('message', event.data);
+                ph.channel = new WebSocket(req, sock, head);
+                ph.channel.onmessage = function(event) {
+                    ph.emit('message', event.data);
                 };
-                pg.channel.onclose = function() {
-                    pg.channel = null;
-                    pg.emit('close');
+                ph.channel.onclose = function() {
+                    ph.channel = null;
+                    ph.emit('close');
                 };
 
                 cb();
@@ -95,14 +95,14 @@ module.exports = function(src, options) {
             });
 
             // Spawn PhantomJS.
-            pg.child = child_process.spawn('phantomjs', [tmpFile], options);
-            pg.child.on('exit', function(code) {
+            ph.child = child_process.spawn('phantomjs', [tmpFile], options);
+            ph.child.on('exit', function(code) {
                 if (cb) {
                     cb(new Error("PhantomJS startup failed, code " + code));
                     cb = null;
                 }
                 else if (code !== 0) {
-                    pg.emit('error', new Error(
+                    ph.emit('error', new Error(
                         "PhantomJS exited with code " + code
                     ));
                 }
@@ -120,13 +120,13 @@ module.exports = function(src, options) {
 
         // Emit result.
         if (err) {
-            pg.emit('error', err);
+            ph.emit('error', err);
         }
         else {
-            pg.emit('open');
+            ph.emit('open');
         }
     });
 
     // Return the handle.
-    return pg;
+    return ph;
 };
