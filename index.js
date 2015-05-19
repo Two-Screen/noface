@@ -52,6 +52,10 @@ module.exports = function(src, options) {
         suffix: '.js'
     });
 
+    // Build phantomjs arguments.
+    var args = (options && options.args) || [];
+    args = args.concat(tmpFile);
+
     // Temporary HTTP server used to establish the channel.
     var server = http.createServer(function(req, res) {
         res.writeHead(400);
@@ -95,7 +99,7 @@ module.exports = function(src, options) {
             });
 
             // Spawn PhantomJS.
-            ph.child = child_process.spawn('phantomjs', [tmpFile], options);
+            ph.child = child_process.spawn('phantomjs', args, options);
             ph.child.on('exit', function(code) {
                 if (cb) {
                     cb(new Error("PhantomJS startup failed, code " + code));

@@ -43,7 +43,8 @@ either case, note that it will not have access to closures, but will have
 access to all of the PhantomJS API.
 
 The optional parameter `options` contains any additional options to pass to
-`child_process.spawn`.
+`child_process.spawn`. If you include an array `args` in options, these will
+be passed to the PhantomJS child.
 
 By default, the PhantomJS child exits when the channel closes. Override
 `channel.onclose` to change this behavior. The default error handler in
