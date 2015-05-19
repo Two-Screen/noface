@@ -58,6 +58,13 @@ module.exports = function(src, options) {
         res.end();
     });
 
+    var args = [];
+    if(options && Array.isArray(options.args) && options.args.length){
+        args = options.args;
+        delete options.args;
+    }
+
+
     async.series([
         function(cb) {
             // Grab a random port, start listening.
@@ -94,8 +101,10 @@ module.exports = function(src, options) {
                 cb = null;
             });
 
+            args.push(tmpFile);
+
             // Spawn PhantomJS.
-            ph.child = child_process.spawn('phantomjs', [tmpFile], options);
+            ph.child = child_process.spawn('phantomjs', args, options);
             ph.child.on('exit', function(code) {
                 if (cb) {
                     cb(new Error("PhantomJS startup failed, code " + code));
