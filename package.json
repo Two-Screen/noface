@@ -9,12 +9,12 @@
         "url": "git://github.com/Two-Screen/noface.git"
     },
     "dependencies": {
-        "async": "0.2",
-        "temp": "0.5",
-        "faye-websocket": "0.6"
+        "async": "1",
+        "temp": "0.8",
+        "faye-websocket": "0.9"
     },
     "devDependencies": {
-        "tap": "0.4"
+        "tap": "1"
     },
     "scripts": {
         "test": "tap test.js"
