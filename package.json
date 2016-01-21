@@ -1,22 +1,22 @@
 {
-    "name": "noface",
-    "description": "Quickly and easily start PhantomJS from Node.js",
-    "author": "Stéphan Kochen <stephan@kochen.nl>",
-    "version": "0.1.2",
-    "homepage": "https://github.com/Two-Screen/noface",
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/Two-Screen/noface.git"
-    },
-    "dependencies": {
-        "async": "1",
-        "temp": "0.8",
-        "faye-websocket": "0.9"
-    },
-    "devDependencies": {
-        "tap": "1"
-    },
-    "scripts": {
-        "test": "tap test.js"
-    }
+  "name": "noface",
+  "description": "Quickly and easily start PhantomJS from Node.js",
+  "author": "Stéphan Kochen <stephan@kochen.nl>",
+  "version": "0.1.2",
+  "homepage": "https://github.com/Two-Screen/noface",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Two-Screen/noface.git"
+  },
+  "dependencies": {
+    "async": "1",
+    "temp": "0.8",
+    "faye-websocket": "0.9"
+  },
+  "devDependencies": {
+    "tap": "1"
+  },
+  "scripts": {
+    "test": "tap test.js"
+  }
 }
