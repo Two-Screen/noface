@@ -28,8 +28,6 @@ processes, and exchange data with them, from within [Node.js].
 
     npm install noface
 
-Make sure `phantomjs` is in your `PATH`.
-
 ### Synopsis
 
     noface(src, options)
