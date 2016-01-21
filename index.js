@@ -6,6 +6,7 @@ var child_process = require('child_process');
 var EventEmitter = require('events').EventEmitter;
 var async = require('async');
 var temp = require('temp');
+var phantomjs = require('phantomjs');
 var WebSocket = require('faye-websocket');
 
 // PhantomJS script template.
@@ -99,7 +100,7 @@ module.exports = function(src, options) {
             });
 
             // Spawn PhantomJS.
-            ph.child = child_process.spawn('phantomjs', args, options);
+            ph.child = child_process.spawn(phantomjs.path, args, options);
             ph.child.on('exit', function(code) {
                 if (cb) {
                     cb(new Error("PhantomJS startup failed, code " + code));
