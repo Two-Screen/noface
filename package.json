@@ -8,15 +8,15 @@
     "type": "git",
     "url": "git://github.com/Two-Screen/noface.git"
   },
-  "dependencies": {
-    "async": "1",
-    "temp": "0.8",
-    "faye-websocket": "0.9"
-  },
-  "devDependencies": {
-    "tap": "1"
-  },
   "scripts": {
     "test": "tap test.js"
+  },
+  "dependencies": {
+    "async": "^1.5.2",
+    "faye-websocket": "^0.10.0",
+    "temp": "^0.8.3"
+  },
+  "devDependencies": {
+    "tap": "^5.1.1"
   }
 }
