@@ -25,14 +25,16 @@ test('open and close from parent', function(t) {
 
     var ph = wrap(t, function(channel) {});
     ph.on("open", function() {
-        ph.close();
+        process.nextTick(function() {
+            ph.close();
+        });
     });
     ph.on("close", function() {
         t.pass("close from parent");
     });
 });
 
-test('messaging.', function(t) {
+test('messaging', function(t) {
     t.plan(1);
 
     var message = "Hello world!";
