@@ -6,7 +6,7 @@ var child_process = require('child_process');
 var EventEmitter = require('events').EventEmitter;
 var async = require('async');
 var temp = require('temp');
-var phantomjs = require('phantomjs');
+var phantomjs = require('phantomjs-prebuilt');
 var WebSocket = require('faye-websocket');
 
 // PhantomJS script template.
