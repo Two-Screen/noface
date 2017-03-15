@@ -3,6 +3,7 @@
   "description": "Quickly and easily start PhantomJS from Node.js",
   "author": "Stéphan Kochen <stephan@kochen.nl>",
   "version": "0.1.4",
+  "license": "MIT",
   "homepage": "https://github.com/Two-Screen/noface",
   "repository": {
     "type": "git",
