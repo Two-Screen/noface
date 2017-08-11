@@ -8,7 +8,7 @@ var async = require('async');
 var temp = require('temp');
 var phantomjs = require('phantomjs-prebuilt');
 var WebSocket = require('faye-websocket');
-
+var noop = function(){};
 // PhantomJS script template.
 var template = async.memoize(function(path, cb) {
     fs.readFile(path, 'utf-8', cb);
@@ -121,7 +121,7 @@ module.exports = function(src, options) {
         }
 
         // Clean up the temporary script file.
-        fs.unlink(tmpFile);
+        fs.unlink(tmpFile, noop);
 
         // Emit result.
         if (err) {
