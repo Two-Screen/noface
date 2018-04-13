@@ -10,7 +10,7 @@
     "url": "git://github.com/Two-Screen/noface.git"
   },
   "scripts": {
-    "test": "tap test.js"
+    "test": "standard && tap test.js"
   },
   "dependencies": {
     "async": "^2.6.0",
@@ -19,6 +19,7 @@
     "temp": "^0.8.3"
   },
   "devDependencies": {
+    "standard": "^11.0.1",
     "tap": "^11.1.3"
   }
 }
