@@ -41,7 +41,7 @@ NoFace.prototype.close = function (message) {
 }
 
 // Create a NoFace. Takes a function to execute in PhantomJS, and
-// optionally any extra options to `childProcess.spawn`.
+// optionally any extra options to `child_process.spawn`.
 module.exports = function (src, options) {
   if (typeof src === 'function') {
     src = src.toString()

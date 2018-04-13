@@ -3,22 +3,24 @@
 No-Face (from [Spirited Away]) lets you quickly and easily start [PhantomJS]
 processes, and exchange data with them, from within [Node.js].
 
-    var noface = require('noface');
+```js
+var noface = require('noface')
 
-    var ph = noface(function(channel) {
-        // Runs within PhantomJS. (No access to closure!)
-        channel.onmessage = function(event) {
-            channel.send(event.data);
-        };
-    });
+var ph = noface(function (channel) {
+  // Runs within PhantomJS. (No access to closure!)
+  channel.onmessage = function (event) {
+    channel.send(event.data)
+  }
+})
 
-    ph.on("open", function() {
-        ph.send("Hello world!");
-    });
+ph.on('open', function () {
+  ph.send('Hello world!')
+})
 
-    ph.on("message", function(message) {
-        ph.close();
-    });
+ph.on('message', function (message) {
+  ph.close()
+})
+```
 
  [Spirited Away]: http://en.wikipedia.org/wiki/Spirited_Away
  [PhantomJS]: http://phantomjs.org/
@@ -26,11 +28,15 @@ processes, and exchange data with them, from within [Node.js].
 
 ### Installing
 
-    npm install noface
+```sh
+npm install noface
+```
 
 ### Synopsis
 
-    noface(src, options)
+```js
+noface(src, options)
+```
 
 No-Face opens a WebSocket connection between Node.js and PhantomJS. The
 `src` callback function is executed within PhantomJS on the socket `open`
@@ -77,7 +83,9 @@ The return value is a `NoFace` instance.
 
 ### Hacking the code
 
-    git clone https://github.com/Two-Screen/noface.git
-    cd noface
-    npm install
-    npm test
+```sh
+git clone https://github.com/Two-Screen/noface.git
+cd noface
+npm install
+npm test
+```
